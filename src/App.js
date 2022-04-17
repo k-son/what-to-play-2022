@@ -1,23 +1,75 @@
-import logo from './logo.svg';
+import React, {useState, useEffect} from 'react';
+import DrawButton from './Components/DrawButton';
 import './App.css';
 
 function App() {
+  const [list, setList] = useState([]);
+  const [currentSong, setCurrentSong] = useState(null);
+
+  const backupList = [
+    {
+      "title": "Backup 1",
+      "bpm": 121
+    },
+    {
+      "title": "Backup 2",
+      "bpm": 146
+    },
+    {
+      "title": "Backup 3",
+      "bpm": 92
+    },
+    {
+      "title": "Backup 4",
+      "bpm": 90
+    },
+  ];
+
+  const getData = () => {
+    fetch('https://whattoplay.k-son.eu/songList.json')
+    .then(response => {
+      return response.json();
+    })
+    .then(list => {
+      console.log('List loaded', list);
+      setList(list);
+    })
+    .catch(err => {
+      console.log("Error", err);
+      setList(backupList);
+      console.log('Backup List loaded', backupList);
+    })
+  };
+
+  useEffect(() => {
+    getData();
+  },[]);
+
+
+  function drawSong() {
+    if (list && list.length > 0) {
+      const currentList = [...list];
+      const index = Math.floor(Math.random()*(list.length));
+      const drawSong = currentList[index];
+      const filteredList = currentList.filter(el => el !== drawSong);
+  
+      console.log(drawSong.title);
+      console.log(filteredList);
+      setList(filteredList);
+      setCurrentSong(drawSong);
+    }
+  }
+
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div>
+        <p>{currentSong ? currentSong.title : 'song'}</p>
+        <p>{currentSong ? currentSong.bpm : 'bpm'}</p>
+      </div>
+      <DrawButton 
+        onClick={drawSong}
+      />
     </div>
   );
 }

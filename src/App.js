@@ -86,12 +86,16 @@ function App() {
           <DrawButton 
             onClick={drawSong}
           />
-          <PutBackButton 
+          {currentSong && 
+            <PutBackButton 
             onClick={putBackSong}
           />
-          <RefreshListButton 
-            onClick={refreshList}
-          />
+          }
+          {list.length === 0 && 
+            <RefreshListButton 
+              onClick={refreshList}
+            />
+          }
       </ThemeProvider>
     </div>
   );

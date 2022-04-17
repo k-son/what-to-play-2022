@@ -2,30 +2,12 @@ import React, {useState, useEffect} from 'react';
 import DrawButton from './Components/DrawButton';
 import PutBackButton from './Components/PutBackButton';
 import RefreshListButton from './Components/RefreshListButton';
+import BackupList from './Components/BackupList';
 import './App.css';
 
 function App() {
   const [list, setList] = useState([]);
   const [currentSong, setCurrentSong] = useState(null);
-
-  const backupList = [
-    {
-      "title": "Backup 1",
-      "bpm": 121
-    },
-    {
-      "title": "Backup 2",
-      "bpm": 146
-    },
-    {
-      "title": "Backup 3",
-      "bpm": 92
-    },
-    {
-      "title": "Backup 4",
-      "bpm": 90
-    },
-  ];
 
   const getData = () => {
     fetch('https://whattoplay.k-son.eu/songList.json')

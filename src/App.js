@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import DrawButton from './Components/DrawButton';
+import PutBackButton from './Components/PutBackButton';
 import './App.css';
 
 function App() {
@@ -60,6 +61,17 @@ function App() {
     }
   }
 
+  function putBackSong() {
+    if (list && list.length > 0) {
+      const currentList = [...list];
+      currentList.push(currentSong);
+
+      console.log(currentList);
+      setList(currentList);
+      setCurrentSong(null);
+    }
+  }
+
 
   return (
     <div className="App">
@@ -69,6 +81,9 @@ function App() {
       </div>
       <DrawButton 
         onClick={drawSong}
+      />
+      <PutBackButton 
+        onClick={putBackSong}
       />
     </div>
   );

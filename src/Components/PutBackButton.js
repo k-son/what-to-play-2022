@@ -1,14 +1,14 @@
 import React from "react";
 
-function DrawButton( {onClick} ) {
+function PutBackButton( {onClick} ) {
 
   return(
     <button
       onClick = {onClick}
     >
-      Draw
+      Put Back
     </button>
   );
 }
 
-export default DrawButton;
+export default PutBackButton;

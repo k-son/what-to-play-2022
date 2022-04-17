@@ -13,6 +13,7 @@ function App() {
   const [list, setList] = useState([]);
   const [currentSong, setCurrentSong] = useState(null);
   const [songsTotalNumber, setSongsTotalNumber] = useState(0);
+  const [progress, setProgress] = useState(100);
 
   const getData = () => {
     fetch('https://whattoplay.k-son.eu/songList.json')
@@ -37,6 +38,10 @@ function App() {
     getData();
   },[]);
 
+  useEffect(() => {
+    calculateProgress();
+  }, [list]);
+
 
   function drawSong() {
     if (list && list.length > 0) {
@@ -49,6 +54,7 @@ function App() {
       console.log(filteredList);
       setList(filteredList);
       setCurrentSong(drawSong);
+      calculateProgress();
     }
   }
 
@@ -60,7 +66,13 @@ function App() {
       console.log(currentList);
       setList(currentList);
       setCurrentSong(null);
+      calculateProgress();
     }
+  }
+
+  function calculateProgress() {
+    const percentage = Math.round((list.length / songsTotalNumber) * 100);
+    setProgress(percentage);
   }
 
   function refreshList() {
@@ -80,18 +92,17 @@ function App() {
             <p>Songs total: {songsTotalNumber}</p>
           </div>
           <ProgressBar
-            total={songsTotalNumber}
-            number={list.length}
+            progress={progress}
           />
           <DrawButton 
             onClick={drawSong}
+            progress={progress}
           />
-          {currentSong && 
-            <PutBackButton 
-            onClick={putBackSong}
+          <PutBackButton 
+              onClick={putBackSong}
+              currentSong={currentSong}
           />
-          }
-          {list.length === 0 && 
+          {list && list.length === 0 && 
             <RefreshListButton 
               onClick={refreshList}
             />

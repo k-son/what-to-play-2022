@@ -51,16 +51,7 @@ const Percentage = styled.span`
 
 
 
-function ProgressBar( {total, number} ) {
-  const [progress, setProgress] = useState();
-
-  useEffect(() => {
-    function calculateProgress() {
-      const percentage = Math.round((number / total) * 100);
-      setProgress(percentage);
-    }
-    calculateProgress();
-  }, [number]);
+function ProgressBar( {progress} ) {
 
   return (
     <>

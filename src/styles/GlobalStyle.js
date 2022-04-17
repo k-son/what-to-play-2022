@@ -16,10 +16,11 @@ export const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
     font-family: 'Roboto', sans-serif;
     min-height: 100vh;
+    background: #e0e0e0;
   }
 
   button:focus {
-    outline: 2px solid #00c3ff;
+    ${'' /* outline: 2px solid #00c3ff; */}
   }
 
   /* used by KeyDownListener and MouseDownListener */

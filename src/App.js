@@ -20,8 +20,8 @@ function App() {
     })
     .catch(err => {
       console.log("Error", err);
-      setList(backupList);
-      console.log('Backup List loaded', backupList);
+      setList(BackupList);
+      console.log('Backup List loaded', BackupList);
     })
   };
 
@@ -45,7 +45,7 @@ function App() {
   }
 
   function putBackSong() {
-    if (list && list.length > 0) {
+    if (list && list.length > 0 && currentSong) {
       const currentList = [...list];
       currentList.push(currentSong);
 

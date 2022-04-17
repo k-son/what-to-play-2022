@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import DrawButton from './Components/DrawButton';
 import PutBackButton from './Components/PutBackButton';
+import RefreshListButton from './Components/RefreshListButton';
 import './App.css';
 
 function App() {
@@ -72,6 +73,12 @@ function App() {
     }
   }
 
+  function refreshList() {
+    console.log('REFRESHING');
+    setCurrentSong(null);
+    getData();
+  }
+
 
   return (
     <div className="App">
@@ -84,6 +91,9 @@ function App() {
       />
       <PutBackButton 
         onClick={putBackSong}
+      />
+      <RefreshListButton 
+        onClick={refreshList}
       />
     </div>
   );

@@ -1,14 +1,15 @@
-import React from "react";
+import React, {useState} from "react";
 import styled from "styled-components";
 import CloseButton from "./CloseButton";
+import ConfirmDelete  from "./ConfirmDelete";
 
 const Wrapper = styled.div`
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100vh;
-  z-index: 999;
+  z-index: 99;
   background: ${props => props.theme.color.background};
   padding: 40px 20px;
   overflow: auto;
@@ -89,14 +90,24 @@ const ListItem = styled.li`
 
 
 function SongList( {songList, choose, deleteSong, closeList} ) {
+
+  const [isConfirmDelete, setConfirmDelete] = useState(false);
+  const [confirmSong, setConfirmSong] = useState(null);
+
+  function toggleConfirmVisibility() {
+    if (isConfirmDelete) {
+      setConfirmDelete(false);
+    } else {
+      setConfirmDelete(true);
+    }
+  }
+
   return(
     <Wrapper>
       <CloseButton 
-        closeList={closeList}
+        action={closeList}
       />
       <List>
-
-
         {songList.sort((a,b) => a.title > b.title ? 1 : -1)
         .map(li => {
           return (
@@ -110,7 +121,10 @@ function SongList( {songList, choose, deleteSong, closeList} ) {
               </button>
               <button
                 className="delete"
-                onClick={() => deleteSong(li.title)}
+                onClick={() => {
+                  setConfirmSong(li.title);
+                  toggleConfirmVisibility();}
+                }
               >
                 <span></span>
                 <span></span>
@@ -119,6 +133,13 @@ function SongList( {songList, choose, deleteSong, closeList} ) {
           )
         })}
       </List>
+      {isConfirmDelete &&
+        <ConfirmDelete 
+          song={confirmSong}
+          closeConfirm={toggleConfirmVisibility}
+          deleteSong={deleteSong}
+        />
+      }
     </Wrapper>
   )
 };

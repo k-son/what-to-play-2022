@@ -18,6 +18,7 @@ function App() {
   const [progress, setProgress] = useState(100);
   const [isSongList, setSongList] = useState(false);
 
+
   const getData = () => {
     fetch('https://whattoplay.k-son.eu/songList.json')
     .then(response => {
@@ -71,7 +72,6 @@ function App() {
 
 
   function refreshList() {
-    console.log('REFRESHING');
     setCurrentSong(null);
     getData();
   }
@@ -80,7 +80,6 @@ function App() {
     if (list && list.length > 0) {
       const currentList = [...list];
       const song = currentList.filter(el => el.title === title);
-      console.log('SONG: ', song);
       const filteredList = currentList.filter(el => el.title !== title);
       setList(filteredList);
       setCurrentSong(song[0]);
@@ -92,8 +91,8 @@ function App() {
     if (list && list.length > 0) {
       const currentList = [...list];
       const filteredList = currentList.filter(el => el.title !== title);
-      setList(filteredList);
       toggleSongListVisibility();
+      setList(filteredList);
     }
   }
 
@@ -106,7 +105,6 @@ function App() {
       }
     }
   }
-
 
 
   return (

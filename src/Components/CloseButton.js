@@ -23,10 +23,10 @@ const Button = styled.button`
   }
 `;
 
-function CloseButton( {closeList} ) {
+function CloseButton( {action} ) {
   return(
     <Button
-      onClick={closeList}
+      onClick={action}
     >
       x
     </Button>

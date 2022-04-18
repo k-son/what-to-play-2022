@@ -11,6 +11,7 @@ import ProgressBar from './components/ProgressBar';
 import SongList from './components/SongsList';
 import ListButton from './components/ListButton';
 import ConfirmReload from './components/ConfirmReload';
+import Logo from './components/Logo';
 import './App.css';
 
 function App() {
@@ -121,6 +122,7 @@ function App() {
     <div className="App">
       <ThemeProvider theme={theme}>
         <GlobalStyle />
+          <Logo />
           {list && list.length < songsTotalNumber && list.length > 0 &&
             <ReloadListButton 
               onClick={toggleConfirmReload}

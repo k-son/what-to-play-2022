@@ -33,9 +33,11 @@ const IconBox = styled.span`
   }
 `;
 
-function ReloadListButton() {
+function ReloadListButton( {onClick} ) {
   return(
-    <Button>
+    <Button 
+      onClick={onClick}
+    >
       <IconBox>
         <IconRefresh />
       </IconBox>

@@ -10,6 +10,7 @@ import ReloadListButton from './components/ReloadListButton';
 import ProgressBar from './components/ProgressBar';
 import SongList from './components/SongsList';
 import ListButton from './components/ListButton';
+import ConfirmReload from './components/ConfirmReload';
 import './App.css';
 
 function App() {
@@ -18,7 +19,7 @@ function App() {
   const [songsTotalNumber, setSongsTotalNumber] = useState(0);
   const [progress, setProgress] = useState(100);
   const [isSongList, setSongList] = useState(false);
-
+  const [isConfirmReload, setConfirmReload] = useState(false);
 
   const getData = () => {
     fetch('https://whattoplay.k-son.eu/songList.json')
@@ -107,13 +108,29 @@ function App() {
     }
   }
 
+  function toggleConfirmReload() {
+    if (isConfirmReload) {
+      setConfirmReload(false);
+    } else {
+      setConfirmReload(true);
+    }
+  }
+
 
   return (
     <div className="App">
       <ThemeProvider theme={theme}>
         <GlobalStyle />
-          {list && list.length < songsTotalNumber &&
-            <ReloadListButton />
+          {list && list.length < songsTotalNumber && list.length > 0 &&
+            <ReloadListButton 
+              onClick={toggleConfirmReload}
+            />
+          }
+          {isConfirmReload &&
+            <ConfirmReload 
+              onClick={refreshList}
+              closeConfirm={toggleConfirmReload}
+            />
           }
           <div>
             <p>{currentSong ? currentSong.title : 'song'}</p>

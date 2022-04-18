@@ -67,19 +67,22 @@ const AcceptButton = styled.button`
 `
 
 
-function ConfirmDelete( {song, closeConfirm, deleteSong} ) {
+function ConfirmReload( {closeConfirm, onClick} ) {
   return(
     <Overlay>
       <CloseButton action={closeConfirm}>x</CloseButton>
       <Dialog>
-        <p>Delete '{song}' from the current list?</p>
+        <p>Reload full setlist?</p>
         <div className="confirm__buttons">
           <CancelButton onClick={closeConfirm}>Cancel</CancelButton>
-          <AcceptButton onClick={()=> deleteSong(song)}>Yes</AcceptButton>
+          <AcceptButton onClick={() => {
+            onClick();
+            closeConfirm();
+          }}>Yes</AcceptButton>
         </div>
       </Dialog>
     </Overlay>
   )
 }
 
-export default ConfirmDelete;
+export default ConfirmReload;

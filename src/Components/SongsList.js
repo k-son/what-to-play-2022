@@ -95,7 +95,10 @@ function SongList( {songList, choose, deleteSong, closeList} ) {
         closeList={closeList}
       />
       <List>
-        {songList.map(li => {
+
+
+        {songList.sort((a,b) => a.title > b.title ? 1 : -1)
+        .map(li => {
           return (
             <ListItem key={li.title}>
               <button 

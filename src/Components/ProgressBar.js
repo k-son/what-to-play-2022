@@ -6,7 +6,7 @@ const Bar = styled.div`
   width: 68%;
   max-width: 400px;
   height: 12px;
-  margin: 80px auto;
+  margin: 12px auto;
   padding: 0px;
   background-color: #1d1d1d;
   border: 1px solid #555;
@@ -55,7 +55,6 @@ function ProgressBar( {progress} ) {
 
   return (
     <>
-      <p>percentage: {progress}</p>
       <Bar>
         <ColorFill progress={progress} />
         <Percentage progress={progress}>

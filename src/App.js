@@ -7,6 +7,8 @@ import DrawButton from './components/DrawButton';
 import PutBackButton from './components/PutBackButton';
 import RefreshListButton from './components/RefreshListButton';
 import ProgressBar from './components/ProgressBar';
+import SongList from './components/SongsList';
+import ListButton from './components/ListButton';
 import './App.css';
 
 function App() {
@@ -14,6 +16,7 @@ function App() {
   const [currentSong, setCurrentSong] = useState(null);
   const [songsTotalNumber, setSongsTotalNumber] = useState(0);
   const [progress, setProgress] = useState(100);
+  const [isSongList, setSongList] = useState(false);
 
   const getData = () => {
     fetch('https://whattoplay.k-son.eu/songList.json')
@@ -39,22 +42,20 @@ function App() {
   },[]);
 
   useEffect(() => {
-    calculateProgress();
-  }, [list]);
+    const percentage = Math.round((list.length / songsTotalNumber) * 100);
+    setProgress(percentage);
+  }, [list, songsTotalNumber]);
 
 
   function drawSong() {
     if (list && list.length > 0) {
       const currentList = [...list];
       const index = Math.floor(Math.random()*(list.length));
-      const drawSong = currentList[index];
-      const filteredList = currentList.filter(el => el !== drawSong);
+      const song = currentList[index];
+      const filteredList = currentList.filter(el => el !== song);
   
-      console.log(drawSong.title);
-      console.log(filteredList);
       setList(filteredList);
-      setCurrentSong(drawSong);
-      calculateProgress();
+      setCurrentSong(song);
     }
   }
 
@@ -63,23 +64,49 @@ function App() {
       const currentList = [...list];
       currentList.push(currentSong);
 
-      console.log(currentList);
       setList(currentList);
       setCurrentSong(null);
-      calculateProgress();
     }
   }
 
-  function calculateProgress() {
-    const percentage = Math.round((list.length / songsTotalNumber) * 100);
-    setProgress(percentage);
-  }
 
   function refreshList() {
     console.log('REFRESHING');
     setCurrentSong(null);
     getData();
   }
+
+  function chooseSong(title) {
+    if (list && list.length > 0) {
+      const currentList = [...list];
+      const song = currentList.filter(el => el.title === title);
+      console.log('SONG: ', song);
+      const filteredList = currentList.filter(el => el.title !== title);
+      setList(filteredList);
+      setCurrentSong(song[0]);
+      toggleSongListVisibility();
+    }
+  }
+
+  function deleteSong(title) {
+    if (list && list.length > 0) {
+      const currentList = [...list];
+      const filteredList = currentList.filter(el => el.title !== title);
+      setList(filteredList);
+      toggleSongListVisibility();
+    }
+  }
+
+  function toggleSongListVisibility() {
+    if (list && list.length > 0) {
+      if (isSongList) {
+        setSongList(false);
+      } else {
+        setSongList(true);
+      }
+    }
+  }
+
 
 
   return (
@@ -89,22 +116,37 @@ function App() {
           <div>
             <p>{currentSong ? currentSong.title : 'song'}</p>
             <p>{currentSong ? currentSong.bpm : 'bpm'}</p>
-            <p>Songs total: {songsTotalNumber}</p>
           </div>
           <ProgressBar
             progress={progress}
           />
-          <DrawButton 
-            onClick={drawSong}
-            progress={progress}
-          />
-          <PutBackButton 
-              onClick={putBackSong}
-              currentSong={currentSong}
-          />
+          {list && list.length > 0 &&
+            <>
+              <DrawButton 
+                onClick={drawSong}
+                progress={progress}
+              />
+              <PutBackButton 
+                  onClick={putBackSong}
+                  currentSong={currentSong}
+                  songList={list}
+              />
+              <ListButton 
+                onClick={toggleSongListVisibility}
+                songList={list}
+              />
+            </>
+          }
           {list && list.length === 0 && 
             <RefreshListButton 
               onClick={refreshList}
+            />
+          }
+          {list && list.length > 0 && isSongList &&
+            <SongList 
+              songList={list}
+              choose={chooseSong}
+              deleteSong={deleteSong}
             />
           }
       </ThemeProvider>

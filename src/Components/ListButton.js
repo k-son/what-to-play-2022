@@ -1,11 +1,11 @@
 import React from "react";
-import styled from 'styled-components';
-import { ReactComponent as IconBackArrow } from '../icons/back-arrow.svg';
+import styled from "styled-components";
+import { ReactComponent as IconList } from '../icons/list-solid.svg';
 
 const Button = styled.button`
   position: absolute;
   bottom: 240px;
-  left: 25%;
+  right: 25%;
   transform: translateX(-50%);
   display: flex;
   justify-content: center;
@@ -32,7 +32,7 @@ const IconBox = styled.span`
     height: auto;
     transition: all .25s ease-in-out;
     fill: ${props => {
-      if (props.song !== null && props.list.length > 0) {
+      if (props.list.length > 0) {
         return props.theme.color.grey;
       } else {
         return props.theme.color.background;
@@ -41,20 +41,14 @@ const IconBox = styled.span`
   }
 `;
 
-function PutBackButton( {onClick, currentSong, songList} ) {
-
+function ListButton( {onClick, songList} ) {
   return(
-    <Button
-      onClick = {onClick}
-    >
-      <IconBox 
-        song={currentSong}
-        list={songList}
-      >
-        <IconBackArrow />
+    <Button onClick={onClick}>
+      <IconBox list={songList}>
+        <IconList />
       </IconBox>
     </Button>
-  );
+  )
 }
 
-export default PutBackButton;
+export default ListButton;

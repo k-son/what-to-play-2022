@@ -147,6 +147,7 @@ function App() {
               songList={list}
               choose={chooseSong}
               deleteSong={deleteSong}
+              closeList={toggleSongListVisibility}
             />
           }
       </ThemeProvider>

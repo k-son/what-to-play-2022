@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import CloseButton from "./CloseButton";
 
 const Wrapper = styled.div`
   position: absolute;
@@ -87,9 +88,12 @@ const ListItem = styled.li`
 `;
 
 
-function SongList( {songList, choose, deleteSong} ) {
+function SongList( {songList, choose, deleteSong, closeList} ) {
   return(
     <Wrapper>
+      <CloseButton 
+        closeList={closeList}
+      />
       <List>
         {songList.map(li => {
           return (

@@ -7,6 +7,7 @@ import DrawButton from './components/DrawButton';
 import PutBackButton from './components/PutBackButton';
 import RefreshListButton from './components/RefreshListButton';
 import ReloadListButton from './components/ReloadListButton';
+import Metronome from './components/Metronome';
 import ProgressBar from './components/ProgressBar';
 import SongList from './components/SongsList';
 import ListButton from './components/ListButton';
@@ -141,6 +142,11 @@ function App() {
           <ProgressBar
             progress={progress}
           />
+          {list && currentSong &&
+            <Metronome 
+              tempo={currentSong.bpm}
+            />
+          }
           {list && list.length > 0 &&
             <>
               <DrawButton 

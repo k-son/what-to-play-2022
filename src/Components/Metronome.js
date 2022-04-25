@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import styled from "styled-components";
-import beep from '../sounds/ping.wav';
+import Sound from '../sounds/ping.wav';
 
 const Button = styled.button`
   position: absolute;
@@ -29,7 +29,7 @@ const Button = styled.button`
 function Metronome( {tempo} ) {
   const [isPlaying, setIsPlaying] = useState(false);
   const [soundInterval, setSoundInteval] = useState(null);
-  const audio = new Audio(beep);
+  const audio = new Audio(Sound);
 
   function play() {
     const tempoInterval = (60 / tempo) * 1000;

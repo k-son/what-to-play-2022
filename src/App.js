@@ -190,7 +190,7 @@ function App() {
               stop={stopMetronome}
             />
           }
-          {list && list.length > 0 &&
+          {list.length > 0 &&
             <>
               <DrawButton 
                 onClick={drawSong}
@@ -207,12 +207,12 @@ function App() {
               />
             </>
           }
-          {list && list.length === 0 && 
+          {list.length === 0 && 
             <RefreshListButton 
               onClick={refreshList}
             />
           }
-          {list && list.length > 0 && isSongList &&
+          {list.length > 0 && isSongList &&
             <SongList 
               songList={list}
               choose={chooseSong}

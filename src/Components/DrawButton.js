@@ -1,5 +1,6 @@
 import React from "react";
 import styled from 'styled-components';
+import RotatingDice from './RotatingDice';
 
 const Button = styled.button`
   position: absolute;
@@ -7,10 +8,12 @@ const Button = styled.button`
   left: 50%;
   transform: translateX(-50%);
   display: flex;
+  flex-direction: column;
+  gap: 16px;
   justify-content: center;
   align-items: center;
   width: 160px;
-  height: 128px;
+  height: 116px;
   border-radius: 30px;
   border: none;
   cursor: pointer;
@@ -56,6 +59,7 @@ function DrawButton( {onClick, progress} ) {
     <Button
       onClick = {onClick}
     >
+      <RotatingDice />
       <Text 
         progress = {progress}
       >

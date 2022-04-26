@@ -13,6 +13,7 @@ import SongList from './components/SongsList';
 import ListButton from './components/ListButton';
 import ConfirmReload from './components/ConfirmReload';
 import Logo from './components/Logo';
+import Sound from './sounds/ping.wav';
 import './App.css';
 
 function App() {
@@ -22,6 +23,10 @@ function App() {
   const [progress, setProgress] = useState(100);
   const [isSongList, setSongList] = useState(false);
   const [isConfirmReload, setConfirmReload] = useState(false);
+  const [isMetronomeOn, setIsMetronomeOn] = useState(false);
+  const [metronomeInterval, setMetronomeInterval] = useState(null);
+
+  const audio = new Audio(Sound);
 
   const getData = () => {
     fetch('https://whattoplay.k-son.eu/songList.json')
@@ -62,6 +67,10 @@ function App() {
       setList(filteredList);
       setCurrentSong(song);
     }
+
+    if (isMetronomeOn) {
+      stopMetronome();
+    }
   }
 
   function putBackSong() {
@@ -72,12 +81,20 @@ function App() {
       setList(currentList);
       setCurrentSong(null);
     }
+
+    if (isMetronomeOn) {
+      stopMetronome();
+    }
   }
 
 
   function refreshList() {
     setCurrentSong(null);
     getData();
+
+    if (isMetronomeOn) {
+      stopMetronome();
+    }
   }
 
   function chooseSong(title) {
@@ -108,6 +125,10 @@ function App() {
         setSongList(true);
       }
     }
+
+    if (isMetronomeOn) {
+      stopMetronome();
+    }
   }
 
   function toggleConfirmReload() {
@@ -116,15 +137,35 @@ function App() {
     } else {
       setConfirmReload(true);
     }
+
+    if (isMetronomeOn) {
+      stopMetronome();
+    }
   }
 
+  function playMetronome() {
+    const tempoInterval = (60 / currentSong.bpm) * 1000;
+    
+    setMetronomeInterval(
+      setInterval(() => {
+        audio.play();
+      }, tempoInterval)
+    );
+
+    setIsMetronomeOn(true);
+  }
+
+  function stopMetronome() {
+    clearInterval(metronomeInterval);
+    setIsMetronomeOn(false);
+  }
 
   return (
     <div className="App">
       <ThemeProvider theme={theme}>
         <GlobalStyle />
           <Logo />
-          {list && list.length < songsTotalNumber && list.length > 0 &&
+          {list.length < songsTotalNumber && list.length > 0 &&
             <ReloadListButton 
               onClick={toggleConfirmReload}
             />
@@ -142,9 +183,11 @@ function App() {
           <ProgressBar
             progress={progress}
           />
-          {list && currentSong &&
+          {currentSong &&
             <Metronome 
-              tempo={currentSong.bpm}
+              isPlaying={isMetronomeOn}
+              play={playMetronome}
+              stop={stopMetronome}
             />
           }
           {list && list.length > 0 &&

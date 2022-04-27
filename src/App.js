@@ -13,6 +13,7 @@ import SongList from './components/SongsList';
 import ListButton from './components/ListButton';
 import ConfirmReload from './components/ConfirmReload';
 import Sound from './sounds/ping.wav';
+import MetronomePage from './components/MetronomePage';
 import './App.css';
 
 function App() {
@@ -217,6 +218,12 @@ function App() {
               deleteSong={deleteSong}
               closeList={toggleSongListVisibility}
             />
+          }
+          {currentSong && 
+            <MetronomePage 
+              bpm={currentSong.bpm}
+            />
+
           }
       </ThemeProvider>
     </div>

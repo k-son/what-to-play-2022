@@ -7,13 +7,14 @@ import DrawButton from './components/DrawButton';
 import PutBackButton from './components/PutBackButton';
 import RefreshListButton from './components/RefreshListButton';
 import ReloadListButton from './components/ReloadListButton';
+import ListButton from './components/ListButton';
 import Metronome from './components/Metronome';
+import MetronomePage from './components/MetronomePage';
+import MetronomePageButton from './components/MetronomePageButton';
 import ProgressBar from './components/ProgressBar';
 import SongList from './components/SongsList';
-import ListButton from './components/ListButton';
 import ConfirmReload from './components/ConfirmReload';
 import Sound from './sounds/ping.wav';
-import MetronomePage from './components/MetronomePage';
 import './App.css';
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
   const [isConfirmReload, setConfirmReload] = useState(false);
   const [isMetronomeOn, setIsMetronomeOn] = useState(false);
   const [metronomeInterval, setMetronomeInterval] = useState(null);
+  const [isMetronomePage, setIsMetronomePage] = useState(false);
 
   const audio = new Audio(Sound);
 
@@ -160,6 +162,14 @@ function App() {
     setIsMetronomeOn(false);
   }
 
+  function toggleMetronomePageVisibility() {
+    if (isMetronomePage) {
+      setIsMetronomePage(false);
+    } else {
+      setIsMetronomePage(true);
+    }
+  }
+
   return (
     <div className="App">
       <ThemeProvider theme={theme}>
@@ -219,11 +229,16 @@ function App() {
               closeList={toggleSongListVisibility}
             />
           }
-          {currentSong && 
+          {currentSong && isMetronomePage &&
             <MetronomePage 
               bpm={currentSong.bpm}
+              close={toggleMetronomePageVisibility}
             />
-
+          }
+          {currentSong &&
+            <MetronomePageButton 
+              action={toggleMetronomePageVisibility}
+            />
           }
       </ThemeProvider>
     </div>

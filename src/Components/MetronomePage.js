@@ -27,7 +27,7 @@ const Slider = styled.input`
 `;
 
 
-function MetronomePage( {bpm} ) {
+function MetronomePage( {bpm, close} ) {
   const [tempo, setTempo] = useState(bpm);
   const [isMetronomeOn, setIsMetronomeOn] = useState(false);
   const [metronomeInterval, setMetronomeInterval] = useState(null);
@@ -52,6 +52,9 @@ function MetronomePage( {bpm} ) {
 
   return(
     <Wrapper>
+      <CloseButton 
+        action={close}
+      />
       <h1>Metronome Page</h1>
       <p>{tempo} bpm</p>
       <Slider 

@@ -30,6 +30,7 @@ function App() {
 
   const audio = new Audio(Sound);
 
+
   const getData = () => {
     fetch('https://whattoplay.k-son.eu/songList.json')
     .then(response => {
@@ -57,7 +58,6 @@ function App() {
     const percentage = Math.round((list.length / songsTotalNumber) * 100);
     setProgress(percentage);
   }, [list, songsTotalNumber]);
-
 
   function drawSong() {
     if (list && list.length > 0) {
@@ -165,8 +165,10 @@ function App() {
   function toggleMetronomePageVisibility() {
     if (isMetronomePage) {
       setIsMetronomePage(false);
+      stopMetronome();
     } else {
       setIsMetronomePage(true);
+      stopMetronome();
     }
   }
 

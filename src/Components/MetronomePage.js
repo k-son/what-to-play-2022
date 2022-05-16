@@ -50,10 +50,15 @@ function MetronomePage( {bpm, close} ) {
     setIsMetronomeOn(false);
   }
 
+  function closePage() {
+    close();
+    stopMetronome();
+  }
+
   return(
     <Wrapper>
       <CloseButton 
-        action={close}
+        action={closePage}
       />
       <h1>Metronome Page</h1>
       <p>{tempo} bpm</p>

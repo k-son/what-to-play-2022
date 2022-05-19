@@ -3,14 +3,15 @@ import styled from "styled-components";
 import { ReactComponent as IconRefresh } from "../icons/refresh.svg";
 
 const Button = styled.button`
-  position: relative;
+  position: absolute;
+  top: 12px;
+  right: 12px;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-left: auto;
   width: 48px;
   height: 48px;
-  border-radius: 10px;
+  border-radius: 12px;
   border: none;
   cursor: pointer;
   background: ${({theme}) => theme.color.background};

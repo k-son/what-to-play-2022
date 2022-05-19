@@ -4,9 +4,9 @@ import { ReactComponent as IconList } from '../icons/list-solid.svg';
 
 const Button = styled.button`
   position: absolute;
-  bottom: 240px;
-  right: 25%;
-  transform: translateX(-50%);
+  bottom: 200px;
+  right: 50%;
+  transform: translateX(136px);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -33,7 +33,7 @@ const IconBox = styled.span`
     transition: all .25s ease-in-out;
     fill: ${props => {
       if (props.list.length > 0) {
-        return props.theme.color.grey;
+        return props.theme.color.icon;
       } else {
         return props.theme.color.background;
       }

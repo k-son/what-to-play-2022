@@ -2,16 +2,13 @@ import React, {useState, useEffect} from 'react';
 import styled from "styled-components";
 
 const Bar = styled.div`
-  position: relative;
-  width: 68%;
-  max-width: 400px;
-  height: 12px;
+  position: absolute;
+  top: 25%;
+  left: 0;
+  width: 100%;
+  height: 20px;
   margin: 12px auto;
   padding: 0px;
-  background-color: #1d1d1d;
-  border: 1px solid #555;
-  border-radius: 25px;
-
 `;
 
 const ColorFill = styled.div`
@@ -26,17 +23,17 @@ const ColorFill = styled.div`
       return props.theme.color.red;
     }
   }};
-  border-top-left-radius: 15px;
-  border-bottom-left-radius: 15px;
-  border-radius: 25px;
+  border-top-right-radius: 2px;
+  border-bottom-right-radius: 2px;
   transition: width .4s;
 `;
 
 const Percentage = styled.span`
   position: absolute;
-  top: -28px;
+  top: -20px;
   left: ${props => props.progress + '%'};
-  font-size: 14px;
+  transform: translateX(-120%);
+  font-size: 16px;
   color: ${props => {
     if (props.progress > 66) {
       return props.theme.color.yellow;
@@ -46,19 +43,20 @@ const Percentage = styled.span`
       return props.theme.color.red;
     }
   }};
+  color: ${props => props.theme.color.icon};
   transition: left .4s;
 `;
 
 
 
-function ProgressBar( {progress} ) {
+function ProgressBar( {progress, songsLeft} ) {
 
   return (
     <>
       <Bar>
         <ColorFill progress={progress} />
         <Percentage progress={progress}>
-          {progress}%
+          {songsLeft}
         </Percentage>
       </Bar>
     </>

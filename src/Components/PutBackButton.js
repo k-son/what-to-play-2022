@@ -4,9 +4,10 @@ import { ReactComponent as IconBackArrow } from '../icons/back-arrow.svg';
 
 const Button = styled.button`
   position: absolute;
-  bottom: 240px;
+  bottom: 200px;
   left: 25%;
-  transform: translateX(-50%);
+  left: 50%;
+  transform: translateX(-136px);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -33,7 +34,7 @@ const IconBox = styled.span`
     transition: all .25s ease-in-out;
     fill: ${props => {
       if (props.song !== null && props.list.length > 0) {
-        return props.theme.color.grey;
+        return props.theme.color.icon;
       } else {
         return props.theme.color.background;
       }

@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 const Button = styled.button`
   position: absolute;
-  top: 320px;
+  bottom: 304px;
   left: 50%;
   transform: translateX(-50%);
   display: flex;

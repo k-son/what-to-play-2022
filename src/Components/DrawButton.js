@@ -4,7 +4,7 @@ import RotatingDice from './RotatingDice';
 
 const Button = styled.button`
   position: absolute;
-  bottom: 80px;
+  bottom: 84px;
   left: 50%;
   transform: translateX(-50%);
   display: flex;
@@ -13,8 +13,8 @@ const Button = styled.button`
   justify-content: center;
   align-items: center;
   width: 160px;
-  height: 116px;
-  border-radius: 30px;
+  height: 80px;
+  border-radius: 25px;
   border: none;
   cursor: pointer;
   background: ${({theme}) => theme.color.background};
@@ -28,29 +28,6 @@ const Button = styled.button`
   }
 `;
 
-const Text = styled.span`
-  font-size: 24px;
-  font-weight: 900;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  color: #bbb;
-${'' /*   -webkit-text-fill-color: #ddd;
-  -webkit-text-stroke-width: .4px;
-  -webkit-text-stroke-color: #555; */}
-  transition: all .15s ease-out;
-
-${'' /*   ${Button}:active & {
-    color: ${props => {
-      if (props.progress > 66) {
-        return props.theme.color.yellow;
-      } else if (props.progress > 33 && props.progress <= 66) {
-        return props.theme.color.orange;
-      } else {
-        return props.theme.color.red;
-      }
-    }}; */}
-  }
-`;
 
 
 function DrawButton( {onClick, progress} ) {
@@ -60,11 +37,6 @@ function DrawButton( {onClick, progress} ) {
       onClick = {onClick}
     >
       <RotatingDice />
-      <Text 
-        progress = {progress}
-      >
-        Draw
-      </Text>
     </Button>
   );
 }

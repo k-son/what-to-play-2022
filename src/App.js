@@ -14,6 +14,8 @@ import MetronomePageButton from './components/MetronomePageButton';
 import ProgressBar from './components/ProgressBar';
 import SongList from './components/SongsList';
 import ConfirmReload from './components/ConfirmReload';
+import SongTempo from './components/SongTempo';
+import SongTitle from './components/SongTitle';
 import Sound from './sounds/ping.wav';
 import './App.css';
 
@@ -187,12 +189,23 @@ function App() {
               closeConfirm={toggleConfirmReload}
             />
           }
-          <div>
-            <p>{currentSong ? currentSong.title : 'song'}</p>
-            <p>{currentSong ? currentSong.bpm : 'bpm'}</p>
-          </div>
+          {currentSong ? 
+            <SongTitle 
+              song={currentSong.title}
+            />
+            :
+            <SongTitle 
+              song='Draw or select a song'
+            />
+          }
+          {currentSong && currentSong.bpm &&
+            <SongTempo 
+              tempo={currentSong.bpm}
+            />
+          }
           <ProgressBar
             progress={progress}
+            songsLeft={list.length}
           />
           {currentSong &&
             <Metronome 

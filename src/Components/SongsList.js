@@ -39,6 +39,9 @@ const ListItem = styled.li`
   .choose {
     display: flex;
     align-items: center;
+    width: 80%;
+    color: ${props => props.theme.color.text};
+    background-color: transparent;
     border: none;
     cursor: pointer;
   }
@@ -48,13 +51,15 @@ const ListItem = styled.li`
     display: block;
     width: 20px;
     height: 20px;
-    background: grey;
+    border-radius: 50%;
+    border: 2px solid ${props => props.theme.color.grey};
   }
 
   .choose__title {
     font-size: 20px;
     text-align: left;
     margin-left: 20px;
+
   }
 
   .delete {
@@ -63,6 +68,7 @@ const ListItem = styled.li`
     display: block;
     width: 48px;
     height: 48px;
+    background-color: transparent;
     border: none;
     border-radius: 50%;
     cursor: pointer;
@@ -76,6 +82,7 @@ const ListItem = styled.li`
       height: 2px;
       background: ${props => props.theme.color.red};
       border-radius: 4px;
+
 
       &:first-of-type {
         transform: translate(-50%,-50%) rotate(45deg);

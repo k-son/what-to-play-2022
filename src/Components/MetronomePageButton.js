@@ -13,7 +13,9 @@ const Button = styled.button`
   border-radius: 12px;
   border: none;
   font-size: 20px;
+  font-weight: 700;
   cursor: pointer;
+  color: ${props => props.theme.color.icon};
   background: ${({theme}) => theme.color.background};
   box-shadow:  -16px 16px 60px ${({theme}) => theme.color.grey},
                 16px -16px 60px #ffffff;

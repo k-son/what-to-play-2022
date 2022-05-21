@@ -32,7 +32,7 @@ const IconBox = styled.span`
     width: 33%;
     height: auto;
     transition: all .25s ease-in-out;
-    fill: ${({theme}) => theme.color.grey};
+    fill: ${({theme}) => theme.color.icon};
   }
 `;
 

@@ -17,12 +17,23 @@ const Wrapper = styled.div`
   overflow: auto;
 `;
 
+const Caption = styled.h1`
+  font-size: 20px;
+  text-transform: uppercase;
+  color: ${props => props.theme.color.grey};
+  margin-top: 12px;
+`;
+
+const Tempo = styled.p`
+  font-size: 16px;
+  color: ${props => props.theme.color.text};
+  margin-top: 24px;
+`;
+
 const Slider = styled.input`
-  position: absolute;
-  top: 20%;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 50%;
+  width: 75%;
+  max-width: 300px;
+  margin: 12px auto;
   cursor: pointer;
 `;
 
@@ -60,8 +71,8 @@ function MetronomePage( {bpm, close} ) {
       <CloseButton 
         action={closePage}
       />
-      <h1>Metronome Page</h1>
-      <p>{tempo} bpm</p>
+      <Caption>Metronome</Caption>
+      <Tempo>{tempo} bpm</Tempo>
       <Slider 
         type="range"
         min="40"

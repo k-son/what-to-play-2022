@@ -19,6 +19,10 @@ import SongTitle from './components/SongTitle';
 import Sound from './sounds/ping.wav';
 import './App.css';
 
+//import MetronomeWebAudio from './components/MetronomeWebAudio';
+//import ProMetronome from 'react-pro-metronome';
+
+
 function App() {
   const [list, setList] = useState([]);
   const [currentSong, setCurrentSong] = useState(null);
@@ -36,7 +40,10 @@ function App() {
   const getData = () => {
     fetch('https://whattoplay.k-son.eu/songList.json')
     .then(response => {
-      return response.json();
+      if (response.ok) {
+        return response.json();
+      }
+      throw new Error();
     })
     .then(list => {
       console.log('List loaded', list);
@@ -255,6 +262,18 @@ function App() {
               action={toggleMetronomePageVisibility}
             />
           }
+
+{/*           <ProMetronome
+            bpm={95}
+            subdivision={2}
+            soundEnabled={true}
+            soundPattern="31313131"
+            render={(props, state) => (
+              <div>
+                {1}/{4}
+              </div>
+            )}
+          /> */}
       </ThemeProvider>
     </div>
   );

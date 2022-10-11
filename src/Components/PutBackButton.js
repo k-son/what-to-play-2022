@@ -14,7 +14,7 @@ const Button = styled.button`
   width: 80px;
   height: 80px;
   border-radius: 20px;
-  border: none;
+  border: 2px solid transparent;
   cursor: pointer;
   background: ${({theme}) => theme.color.background};
   box-shadow:  -16px 16px 60px ${({theme}) => theme.color.grey},
@@ -29,8 +29,8 @@ const Button = styled.button`
 
 const IconBox = styled.span`
   & svg {
-    width: 33%;
-    height: auto;
+    height: 32px;
+    width: auto;
     transition: all .25s ease-in-out;
     fill: ${props => {
       if (props.song !== null && props.list.length > 0) {

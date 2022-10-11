@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { ReactComponent as IconList } from '../icons/list-solid.svg';
+import { ReactComponent as IconList } from '../icons/playlist-music.svg';
 
 const Button = styled.button`
   position: absolute;
@@ -28,8 +28,8 @@ const Button = styled.button`
 
 const IconBox = styled.span`
   & svg {
-    width: 33%;
-    height: auto;
+    height: 40px;
+    width: auto;
     transition: all .25s ease-in-out;
     fill: ${props => {
       if (props.list.length > 0) {

@@ -9,7 +9,7 @@ const Overlay = styled.div`
   width: 100%;
   height: 100vh;
   z-index: 999;
-  background: rgba(220,220,220,.7);
+  background: rgba(220,220,220,.85);
   padding: 40px 20px;
   overflow: auto;
 `;

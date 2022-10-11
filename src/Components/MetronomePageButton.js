@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { ReactComponent as IconMetronome } from '../icons/metronome-tick.svg';
 
 const Button = styled.button`
   position: absolute;
@@ -27,13 +28,24 @@ const Button = styled.button`
   }
 `;
 
+const IconBox = styled.span`
+  & svg {
+    height: 24px;
+    width: auto;
+    transition: all .25s ease-in-out;
+    fill: ${({theme}) => theme.color.icon};
+  }
+`;
+
 
 function MetronomePageButton( {action} ) {
   return(
     <Button
       onClick={action}
     >
-      M
+      <IconBox>
+        <IconMetronome/>
+      </IconBox>
     </Button>
   )
 }

@@ -27,8 +27,8 @@ const Button = styled.button`
 
 const IconBox = styled.span`
   & svg {
-    width: 33%;
-    height: auto;
+    height: 24px;
+    width: auto;
     transition: all .25s ease-in-out;
     fill: ${({theme}) => theme.color.icon};
   }

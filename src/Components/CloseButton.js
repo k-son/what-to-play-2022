@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { ReactComponent as IconClose } from '../icons/close-circle.svg';   
 
 const Button = styled.button`
   position: relative;
@@ -23,12 +24,23 @@ const Button = styled.button`
   }
 `;
 
+const IconBox = styled.span`
+  & svg {
+    height: 28px;
+    width: auto;
+    transition: all .25s ease-in-out;
+    fill: ${({theme}) => theme.color.icon};
+  }
+`;
+
 function CloseButton( {action} ) {
   return(
     <Button
       onClick={action}
     >
-      x
+      <IconBox>
+        <IconClose/>
+      </IconBox>
     </Button>
   )
 }

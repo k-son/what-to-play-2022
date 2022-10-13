@@ -14,17 +14,13 @@ const Button = styled.button`
   border: none;
   cursor: pointer;
   background: ${({theme}) => theme.color.background};
-  box-shadow:  -16px 16px 60px ${({theme}) => theme.color.grey},
-                16px -16px 60px #ffffff;
+  box-shadow:  -8px 8px 35px -5px ${({theme}) => theme.color.buttonShadowDarker},
+                10px -10px 50px -4px ${({theme}) => theme.color.buttonShadowLighter};
   transition: all .25s ease-in-out;
-
-  &:hover svg {
-    fill: ${({theme}) => theme.color.iconHover};
-  }
-
+  
   &:active {
-    box-shadow:  -8px 8px 60px -4px ${({theme}) => theme.color.grey},
-                  12px -12px 60px #ffffff;
+    box-shadow:  -4px 4px 40px -8px ${({theme}) => theme.color.buttonShadowDarker},
+                 10px -10px 50px -4px ${({theme}) => theme.color.buttonShadowLighter};
   }
 `;
 

@@ -17,8 +17,8 @@ const Button = styled.button`
   border: none;
   cursor: pointer;
   background: ${({theme}) => theme.color.background};
-  box-shadow:  -16px 16px 60px ${({theme}) => theme.color.grey},
-                16px -16px 60px #ffffff;
+  box-shadow:  -16px 16px 60px ${({theme}) => theme.color.buttonShadowDarker},
+                16px -16px 60px ${({theme}) => theme.color.buttonShadowLighter};
   transition: all .25s ease-in-out;
 
   &:hover svg {
@@ -26,8 +26,8 @@ const Button = styled.button`
   }
   
   &:active {
-    box-shadow:  -8px 8px 60px -4px ${({theme}) => theme.color.grey},
-                  12px -12px 60px #ffffff;
+    box-shadow:  -8px 8px 60px -4px ${({theme}) => theme.color.buttonShadowDarker},
+                  12px -12px 60px ${({theme}) => theme.color.buttonShadowLighter};
   }
 `;
 

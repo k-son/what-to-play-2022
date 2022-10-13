@@ -12,8 +12,10 @@ export const theme = {
     /* iconHover: '#8338EC', */
     text: '#eee',
     /* text: '#222222', */
-    background: '#3A86FF'
+    background: '#3A86FF',
     /* background: '#e0e0e0' */
+    buttonShadowLighter: '#71A7FF',
+    buttonShadowDarker: '#0055DE'
   },
   logoHeight: '54px',
   diceSide: '28px'

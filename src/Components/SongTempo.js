@@ -9,6 +9,7 @@ const Paragraph = styled.p`
   transform: translateX(-50%);
   font-size: 16px;
   color: ${({theme}) => theme.color.icon};
+  opacity: .8;
 `;
 
 function SongTempo( {tempo} ) {

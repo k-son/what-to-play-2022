@@ -3,12 +3,12 @@ import styled from "styled-components";
 
 const Paragraph = styled.p`
   position: absolute;
-  top: calc(25% - 64px);
+  top: calc(25% - 72px);
   left: 50%;
   transform: translateX(-50%);
   width: fit-content;
   max-width: 80%;
-  font-size: 20px;
+  font-size: 24px;
   color: ${({theme}) => theme.color.text};
 `;
 

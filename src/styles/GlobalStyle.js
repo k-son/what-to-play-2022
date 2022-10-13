@@ -17,6 +17,7 @@ export const GlobalStyle = createGlobalStyle`
     font-family: 'Roboto', sans-serif;
     min-height: 100vh;
     background: #e0e0e0;
+    background: #3A86FF;
   }
 
   button:focus {

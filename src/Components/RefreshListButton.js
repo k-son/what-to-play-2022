@@ -21,6 +21,10 @@ const Button = styled.button`
                 16px -16px 60px #ffffff;
   transition: all .25s ease-in-out;
 
+  &:hover svg {
+    fill: ${({theme}) => theme.color.iconHover};
+  }
+  
   &:active {
     box-shadow:  -8px 8px 60px -4px ${({theme}) => theme.color.grey},
                   12px -12px 60px #ffffff;

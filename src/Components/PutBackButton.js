@@ -14,13 +14,17 @@ const Button = styled.button`
   width: 80px;
   height: 80px;
   border-radius: 20px;
-  border: none;
+  border: 2px solid transparent;
   cursor: pointer;
   background: ${({theme}) => theme.color.background};
   box-shadow:  -16px 16px 60px ${({theme}) => theme.color.grey},
                 16px -16px 60px #ffffff;
   transition: all .25s ease-in-out;
 
+  &:hover svg {
+    fill: ${({theme}) => theme.color.iconHover};
+  }
+  
   &:active {
     box-shadow:  -8px 8px 60px -4px ${({theme}) => theme.color.grey},
                   12px -12px 60px #ffffff;
@@ -29,8 +33,8 @@ const Button = styled.button`
 
 const IconBox = styled.span`
   & svg {
-    width: 33%;
-    height: auto;
+    height: 32px;
+    width: auto;
     transition: all .25s ease-in-out;
     fill: ${props => {
       if (props.song !== null && props.list.length > 0) {

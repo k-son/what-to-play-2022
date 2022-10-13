@@ -1,5 +1,6 @@
 import styled from "styled-components";
-
+import { ReactComponent as IconMetronomeStop } from '../icons/metronome-tick.svg';
+import { ReactComponent as IconMetronomeStart } from '../icons/metronome.svg';
 
 const Button = styled.button`
   position: absolute;
@@ -19,9 +20,22 @@ const Button = styled.button`
                 16px -16px 60px #ffffff;
   transition: all .25s ease-in-out;
 
+  &:hover svg {
+    fill: ${({theme}) => theme.color.iconHover};
+  }
+  
   &:active {
     box-shadow:  -8px 8px 60px -4px ${({theme}) => theme.color.grey},
                   12px -12px 60px #ffffff;
+  }
+`;
+
+const IconBox = styled.span`
+  & svg {
+    height: 36px;
+    width: auto;
+    transition: all .25s ease-in-out;
+    fill: ${({theme}) => theme.color.icon};
   }
 `;
 
@@ -31,12 +45,16 @@ function Metronome( {isPlaying, play, stop } ) {
     <>
       {!isPlaying &&
         <Button onClick={play}>
-          Beep
+          <IconBox>
+            <IconMetronomeStart/>
+          </IconBox>
         </Button>    
       }
       {isPlaying && 
         <Button onClick={stop}>
-          Stop
+          <IconBox>
+            <IconMetronomeStop/>
+          </IconBox>
         </Button>  
       }
     </>

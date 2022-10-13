@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { ReactComponent as IconMetronome } from '../icons/metronome-tick.svg';
 
 const Button = styled.button`
   position: absolute;
@@ -21,9 +22,22 @@ const Button = styled.button`
                 16px -16px 60px #ffffff;
   transition: all .25s ease-in-out;
 
+  &:hover svg {
+    fill: ${({theme}) => theme.color.iconHover};
+  }
+  
   &:active {
     box-shadow:  -8px 8px 60px -4px ${({theme}) => theme.color.grey},
                   12px -12px 60px #ffffff;
+  }
+`;
+
+const IconBox = styled.span`
+  & svg {
+    height: 24px;
+    width: auto;
+    transition: all .25s ease-in-out;
+    fill: ${({theme}) => theme.color.icon};
   }
 `;
 
@@ -33,7 +47,9 @@ function MetronomePageButton( {action} ) {
     <Button
       onClick={action}
     >
-      M
+      <IconBox>
+        <IconMetronome/>
+      </IconBox>
     </Button>
   )
 }

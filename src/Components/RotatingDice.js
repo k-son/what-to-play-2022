@@ -43,7 +43,8 @@ const Side = styled.div`
   height: 100%;
   padding: 10%;
   border-radius: 3px;
-  background-color: #aaa;
+  background-color: #eee;
+  ${'' /* background-color: #aeaeae; */}
 
     span {
       display: block;

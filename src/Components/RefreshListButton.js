@@ -5,25 +5,21 @@ import { ReactComponent as IconRefresh } from "../icons/refresh.svg";
 
 const Button = styled.button`
   position: absolute;
-  bottom: 100px;
+  bottom: 84px;
   left: 50%;
   transform: translateX(-50%);
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100px;
-  height: 100px;
-  border-radius: 12px;
+  width: 160px;
+  height: 80px;
+  border-radius: 24px;
   border: none;
   cursor: pointer;
   background: ${({theme}) => theme.color.background};
   box-shadow:  -16px 16px 60px ${({theme}) => theme.color.buttonShadowDarker},
                 16px -16px 60px ${({theme}) => theme.color.buttonShadowLighter};
   transition: all .25s ease-in-out;
-
-  &:hover svg {
-    fill: ${({theme}) => theme.color.iconHover};
-  }
   
   &:active {
     box-shadow:  -8px 8px 60px -4px ${({theme}) => theme.color.buttonShadowDarker},
@@ -33,8 +29,8 @@ const Button = styled.button`
 
 const IconBox = styled.span`
   & svg {
-    width: 33%;
-    height: auto;
+    height: 64px;
+    width: auto;
     transition: all .25s ease-in-out;
     fill: ${({theme}) => theme.color.icon};
   }

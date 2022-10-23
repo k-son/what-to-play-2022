@@ -34,16 +34,11 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   ::-webkit-scrollbar-track {
-    background: #1d1d1d;
+    background: ${({theme}) => theme.color.backgroundLight};
   }
 
   ::-webkit-scrollbar-thumb {
-    background-image: linear-gradient(to bottom, #666, #444);
-    border: 1px solid #1d1d1d;
+    background: ${({theme}) => theme.color.white};
     border-radius: 15px;
-  }
-
-  ::-webkit-scrollbar-thumb:hover {
-    background-image: linear-gradient(to bottom, #888, #666);
   }
 `;

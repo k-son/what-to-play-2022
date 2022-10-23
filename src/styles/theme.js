@@ -15,6 +15,7 @@ export const theme = {
     text: '#eee',
     /* text: '#222222', */
     background: '#3A86FF',
+    backgroundLight: '#8EB9FE',
     /* background: '#e0e0e0' */
     buttonShadowLighter: '#71A7FF',
     buttonShadowDarker: '#0055DE'

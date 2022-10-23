@@ -17,13 +17,25 @@ const Button = styled.button`
   border: none;
   cursor: pointer;
   background: ${({theme}) => theme.color.background};
-  box-shadow:  -16px 16px 60px ${({theme}) => theme.color.buttonShadowDarker},
-                16px -16px 60px ${({theme}) => theme.color.buttonShadowLighter};
   transition: all .25s ease-in-out;
   
-  &:active {
-    box-shadow:  -8px 8px 60px -4px ${({theme}) => theme.color.buttonShadowDarker},
-                  12px -12px 60px ${({theme}) => theme.color.buttonShadowLighter};
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    border-radius: 20px;
+    box-shadow:  -10px 10px 50px -5px ${({theme}) => theme.color.buttonShadowDarker},
+                   2px -2px 45px -3px ${({theme}) => theme.color.buttonShadowLighter};
+    transition: all .25s ease-in-out;
+  }
+
+  &:active::before {
+    box-shadow:  -6px 6px 50px -15px ${({theme}) => theme.color.buttonShadowDarker},
+                  1px -1px 45px -10px ${({theme}) => theme.color.buttonShadowLighter};
   }
 `;
 

@@ -8,13 +8,11 @@ const Button = styled.button`
   left: 50%;
   transform: translateX(-50%);
   display: flex;
-  flex-direction: column;
-  gap: 16px;
   justify-content: center;
   align-items: center;
   width: 160px;
   height: 80px;
-  border-radius: 25px;
+  border-radius: 24px;
   border: none;
   cursor: pointer;
   background: ${({theme}) => theme.color.background};
@@ -36,7 +34,7 @@ ${'' /*   box-shadow:  -20px 20px 60px ${({theme}) => theme.color.buttonShadowDa
     transition: all .25s ease-in-out;
   }
 
-  &:active::before{
+  &:active::before {
     box-shadow:  -6px 6px 50px -15px ${({theme}) => theme.color.buttonShadowDarker},
                   1px -1px 45px -10px ${({theme}) => theme.color.buttonShadowLighter};
   }

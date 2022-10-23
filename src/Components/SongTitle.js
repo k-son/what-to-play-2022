@@ -6,9 +6,13 @@ const Paragraph = styled.p`
   top: calc(25% - 72px);
   left: 50%;
   transform: translateX(-50%);
-  width: fit-content;
-  max-width: 80%;
+  width: 80%;
+  max-width: 600px;
   font-size: 24px;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
   color: ${({theme}) => theme.color.text};
 `;
 

@@ -29,6 +29,9 @@ const Button = styled.button`
 `;
 
 const IconBox = styled.span`
+  font-size: 20px;
+  color: ${({theme}) => theme.color.icon};
+
   & svg {
     height: 24px;
     width: auto;
@@ -44,7 +47,7 @@ function MetronomePageButton( {action} ) {
       onClick={action}
     >
       <IconBox>
-        <IconMetronome/>
+        M
       </IconBox>
     </Button>
   )

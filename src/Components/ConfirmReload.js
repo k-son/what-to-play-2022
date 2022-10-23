@@ -26,12 +26,14 @@ const Dialog = styled.div`
   padding: 20px;
   font-size: 16px;
   line-height: 1.6;
+  color: #222;
 
   .confirm__buttons {
     margin-top: 36px;
     display: flex;
     align-items: center;
     justify-content: center;
+    gap: 24px;
   }
 `;
 
@@ -78,7 +80,9 @@ function ConfirmReload( {closeConfirm, onClick} ) {
           <AcceptButton onClick={() => {
             onClick();
             closeConfirm();
-          }}>Yes</AcceptButton>
+          }}>
+            Reload
+          </AcceptButton>
         </div>
       </Dialog>
     </Overlay>

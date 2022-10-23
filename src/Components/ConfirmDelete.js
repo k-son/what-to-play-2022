@@ -26,7 +26,6 @@ const Dialog = styled.div`
   padding: 20px;
   font-size: 16px;
   line-height: 1.6;
-  text-align: left;
   color: #222;
 
   .confirm__buttons {

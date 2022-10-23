@@ -26,12 +26,15 @@ const Dialog = styled.div`
   padding: 20px;
   font-size: 16px;
   line-height: 1.6;
+  text-align: left;
+  color: #222;
 
   .confirm__buttons {
     margin-top: 36px;
     display: flex;
     align-items: center;
     justify-content: center;
+    gap: 24px;
   }
 `;
 
@@ -72,10 +75,10 @@ function ConfirmDelete( {song, closeConfirm, deleteSong} ) {
     <Overlay>
       <CloseButton action={closeConfirm}>x</CloseButton>
       <Dialog>
-        <p>Delete '{song}' from the current list?</p>
+        <p>Delete <b>'{song}'</b> from the current list?</p>
         <div className="confirm__buttons">
           <CancelButton onClick={closeConfirm}>Cancel</CancelButton>
-          <AcceptButton onClick={()=> deleteSong(song)}>Yes</AcceptButton>
+          <AcceptButton onClick={()=> deleteSong(song)}>Delete</AcceptButton>
         </div>
       </Dialog>
     </Overlay>

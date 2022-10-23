@@ -16,8 +16,6 @@ const Button = styled.button`
   border: none;
   cursor: pointer;
   background: ${({theme}) => theme.color.background};
-${'' /*   box-shadow:  -20px 20px 60px ${({theme}) => theme.color.buttonShadowDarker},
-                20px -20px 60px ${({theme}) => theme.color.buttonShadowLighter}; */}
   transition: all .25s ease-in-out;
 
   &::before {

@@ -20,21 +20,67 @@ const Wrapper = styled.div`
 const Caption = styled.h1`
   font-size: 20px;
   text-transform: uppercase;
-  color: ${props => props.theme.color.grey};
+  color: ${props => props.theme.color.text};
   margin-top: 12px;
 `;
 
 const Tempo = styled.p`
   font-size: 16px;
   color: ${props => props.theme.color.text};
-  margin-top: 24px;
+  margin-top: 32px;
 `;
 
 const Slider = styled.input`
-  width: 75%;
-  max-width: 300px;
-  margin: 12px auto;
-  cursor: pointer;
+  & {
+    -webkit-appearance: none;
+    margin: 32px 0;
+    width: 100%;
+    max-width: 300px;
+  }
+  &:focus {
+    outline: none;
+  }
+  &::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 8px;
+    cursor: pointer;
+    background: ${props => props.theme.color.yellow};
+  }
+  &::-webkit-slider-thumb {
+    height: 24px;
+    width: 24px;
+    margin-top: -8px;
+    border-radius: 50%;
+    background: ${props => props.theme.color.white};
+    cursor: pointer;
+    -webkit-appearance: none;
+  }
+  &:focus::-webkit-slider-runnable-track {
+    background: ${props => props.theme.color.yellow};
+  }
+  &::-moz-range-track {
+    width: 100%;
+    height: 8px;
+    cursor: pointer;
+    background: ${props => props.theme.color.yellow};
+  }
+  &::-moz-range-thumb {
+    height: 24px;
+    width: 24px;
+    margin-top: -8px;
+    border-radius: 50%;
+    background: ${props => props.theme.color.white};
+    cursor: pointer;
+  }
+  &::-ms-track {
+    width: 100%;
+    height: 8px;
+    cursor: pointer;
+    background: transparent;
+    border-color: transparent;
+    border-width: 16px 0;
+    color: transparent;
+  }
 `;
 
 

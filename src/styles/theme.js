@@ -1,8 +1,10 @@
 export const theme = {
   color: {
-    orange: '#FB5607',
+    orange: '#FF910B',
+    /* orange: '#FB5607', */
     yellow: '#FFBE0B',
-    red: '#FF006E',
+    red: '#FF460B',
+    /* red: '#FF006E', */
     green: '#448735',
     white: '#fafafa',
     grey: '#bebebe',

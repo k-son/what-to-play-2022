@@ -181,6 +181,25 @@ function App() {
     }
   }
 
+  function renderMetronomePage() {
+    if (currentSong) {
+      return (
+        <MetronomePage 
+          bpm={currentSong.bpm}
+          close={toggleMetronomePageVisibility}
+        />
+      )
+    } else {
+      return (
+        <MetronomePage 
+          bpm={80}
+          close={toggleMetronomePageVisibility}
+        />
+      )
+    }
+  }
+
+
   return (
     <div className="App">
       <ThemeProvider theme={theme}>
@@ -251,17 +270,10 @@ function App() {
               closeList={toggleSongListVisibility}
             />
           }
-          {currentSong && isMetronomePage &&
-            <MetronomePage 
-              bpm={currentSong.bpm}
-              close={toggleMetronomePageVisibility}
-            />
-          }
-          {currentSong &&
-            <MetronomePageButton 
-              action={toggleMetronomePageVisibility}
-            />
-          }
+          {isMetronomePage && renderMetronomePage()}
+          <MetronomePageButton 
+            action={toggleMetronomePageVisibility}
+          />
 
 {/*           <ProMetronome
             bpm={95}
